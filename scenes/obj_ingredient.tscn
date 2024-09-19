@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvbw61cjjh4ty"]
+
+[ext_resource type="Texture2D" uid="uid://c8graaoi07dqc" path="res://sprites/test_sprite_alt.png" id="1_ernxu"]
+[ext_resource type="Script" path="res://scripts/bhv_ingredient.gd" id="1_n7a4u"]
+[ext_resource type="Texture2D" uid="uid://q5pto0bcs7jx" path="res://sprites/test_sprite.png" id="2_5be8i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecpfl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ernxu")
+}],
+"loop": true,
+"name": &"cooked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5be8i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xsmm"]
+radius = 41.7732
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vqb"]
+size = Vector2(84, 84)
+
+[node name="ObjIngredient" type="RigidBody2D"]
+input_pickable = true
+gravity_scale = 0.6
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_n7a4u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_ecpfl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2xsmm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s7vqb")
+disabled = true
+debug_color = Color(0.800267, 0.407681, 0.284905, 0.42)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
