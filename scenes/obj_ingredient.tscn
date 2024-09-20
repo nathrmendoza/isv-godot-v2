@@ -24,10 +24,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xsmm"]
-radius = 41.7732
+radius = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vqb"]
-size = Vector2(84, 84)
+size = Vector2(64, 64)
 
 [node name="ObjIngredient" type="RigidBody2D" groups=["ingredients"]]
 z_index = 1
@@ -38,7 +38,6 @@ max_contacts_reported = 1
 script = ExtResource("1_n7a4u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_ecpfl")
 animation = &"raw"
 

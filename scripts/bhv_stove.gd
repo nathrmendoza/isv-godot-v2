@@ -20,11 +20,26 @@ var colliding_body_ref = null
 @onready var sprite_parent: Sprite2D = $ParentMask
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var timer: float = 0.0
+var cook_time_tally: float = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	cooking_slots = [null, null, null, null, null, null]
 	cooking_sprites = [null, null, null, null, null, null]
 	cooking_tweens = [null, null, null, null, null, null]
+
+#this ensures stove animations are running until there's no ingredient left
+func _physics_process(delta: float) -> void:
+	#run timer 
+	if cook_time_tally > 0.0:
+		timer += delta
+	if timer > cook_time_tally:
+		animated_sprite.stop()
+		animated_sprite.animation = 'default'
+		timer = 0.0
+		cook_time_tally = 0.0
+		
 
 func can_accept_ingredient() -> bool:
 	return cooking_slots.count(null) > 0
@@ -37,12 +52,17 @@ func start_cooking(ingredient):
 	var slot = get_available_slot()
 	if slot == -1: return false
 	
+	#reset colliding body reference
+	colliding_body_ref = null
+	
 	cooking_slots[slot] = ingredient
 	ingredient.start_cooking(cooking_positions[slot].global_position)
 	
 	#change stove animation
-	animated_sprite.animation = 'cooking'
-	animated_sprite.play()
+	cook_time_tally = timer + ingredient.cook_timer
+	if animated_sprite.animation != 'cooking':
+		animated_sprite.animation = 'cooking'
+		animated_sprite.play()
 	
 	#instantiate ingredient sprite
 	var sprite = Sprite2D.new()
@@ -67,7 +87,6 @@ func start_cooking(ingredient):
 
 #stove finished cooking
 func finish_cooking(slot: int):
-	animated_sprite.animation = 'default'
 	var ingredient = cooking_slots[slot]
 	
 	#clear slots
@@ -85,7 +104,7 @@ func _on_area_2d_body_entered(colliding_body: Node2D) -> void:
 		colliding_body_ref = colliding_body
 
 func _on_area_2d_body_exited(colliding_body: Node2D) -> void:
-	if colliding_body_ref == colliding_body:
+	if colliding_body_ref and colliding_body_ref == colliding_body:
 		colliding_body_ref = null
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
