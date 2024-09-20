@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://o1cgde63wpn6"]
+
+[ext_resource type="Texture2D" uid="uid://dxcwj06j2dik0" path="res://sprites/stove/spr_stove_cooking_1.png" id="1_1gc15"]
+[ext_resource type="Script" path="res://scripts/bhv_stove.gd" id="1_815hk"]
+[ext_resource type="Texture2D" uid="uid://w6ell54oayk7" path="res://sprites/stove/spr_stove_cooking_2.png" id="2_604ah"]
+[ext_resource type="Texture2D" uid="uid://c4173628cns5" path="res://sprites/stove/spr_stove_cooking_3.png" id="3_5ivjn"]
+[ext_resource type="Texture2D" uid="uid://dmtfvnfj631uf" path="res://sprites/stove/spr_stove_cooking_4.png" id="4_ldc6d"]
+[ext_resource type="Texture2D" uid="uid://cadk7kcu435v2" path="res://sprites/stove/spr_stove_cooking_5.png" id="5_cx6i0"]
+[ext_resource type="Texture2D" uid="uid://ci5w002itewll" path="res://sprites/stove/spr_stove_cooking_6.png" id="6_tejua"]
+[ext_resource type="Texture2D" uid="uid://bguih881fbn6b" path="res://sprites/stove/spr_stove_cooking_7.png" id="7_ffyi4"]
+[ext_resource type="Texture2D" uid="uid://jhwbiw2h2eu7" path="res://sprites/stove/spr_stove_cooking_8.png" id="8_bi7iw"]
+[ext_resource type="Texture2D" uid="uid://cwbps8c7vxl6d" path="res://sprites/stove/spr_stove_default.png" id="9_qoufn"]
+[ext_resource type="Texture2D" uid="uid://sjfej8augshp" path="res://sprites/stove/spr_clip_mask.png" id="11_h36gh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x37j2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1gc15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_604ah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5ivjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ldc6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cx6i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tejua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ffyi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bi7iw")
+}],
+"loop": true,
+"name": &"cooking",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qoufn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ObjStove" type="Node2D"]
+script = ExtResource("1_815hk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x37j2")
+frame_progress = 0.495441
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -50, -23, -49, -47, -42, -67, -33, -80, -21, -88, -11, -92, 0, -93, 7, -93, 15, -90, 26, -85, 35, -75, 46, -62, 55, -46, 62, -29, 67, -15, 69, 0, 70, 17, 69, 33, 66, 43, 63, 51, 60, 60, 56, 66.4338, 51.7108, 72, 48, 79, 42, 84, 36, 89, 28, 92, 20, 93, 14, 93, 5, 91, -4, 88, -10, 82, -19, 73, -28, 59, -37, 47, -42, 35, -46, 13, -50)
+
+[node name="ParentMask" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(-5.68434e-14, -6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_h36gh")
+
+[node name="Position1" type="Marker2D" parent="ParentMask"]
+position = Vector2(-225, 30)
+scale = Vector2(5, 5)
+
+[node name="Position2" type="Marker2D" parent="ParentMask"]
+position = Vector2(2.84217e-13, 30)
+scale = Vector2(5, 5)
+
+[node name="Position3" type="Marker2D" parent="ParentMask"]
+position = Vector2(225, 30)
+scale = Vector2(5, 5)
+
+[node name="Position4" type="Marker2D" parent="ParentMask"]
+position = Vector2(-225, 180)
+scale = Vector2(5, 5)
+
+[node name="Position5" type="Marker2D" parent="ParentMask"]
+position = Vector2(2.84217e-13, 180)
+scale = Vector2(5, 5)
+
+[node name="Position6" type="Marker2D" parent="ParentMask"]
+position = Vector2(225, 180)
+scale = Vector2(5, 5)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

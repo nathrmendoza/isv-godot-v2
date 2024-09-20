@@ -1,11 +1,13 @@
 extends RigidBody2D
 
+#ingredient specific properties
+@export_range(1, 15, 1) var cook_timer: int = 3
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_body: CollisionShape2D = $CollisionShape2D
 @onready var shape_collider: CollisionShape2D = $Area2D/Shape
 
 var is_dragging: bool = false
-var is_cooking: bool = false
 var cooked: bool = false
 var draggable: bool = true
 
@@ -14,7 +16,7 @@ var last_pointer_position: Vector2
 var pointer_velocity: Vector2
 
 var throw_force_mult: float = 15.0
-var throw_max_velocity: float = 50.0
+var throw_max_velocity: float = 30.0
 
 var offscreen_margin: float
 var viewport_height: float
@@ -85,3 +87,34 @@ func check_pointer_within_shape(point: Vector2) -> bool:
 				return abs(local_point - circle_center).length() <= collision_body.shape.radius
 	#fallback
 	return false
+
+#stove cooking handler (triggered from stove)
+func start_cooking(cooking_position: Vector2):
+	if not cooked:
+		draggable = false
+		global_position = cooking_position
+		set_deferred('freeze', true)
+		hide()
+
+func finish_cooking():
+	show()
+	cooked = true
+	draggable = true
+	animated_sprite.animation = 'cooked'
+	freeze = false
+	_tween_pop_off('right')
+
+#getting texture from animation (single frame only)
+func get_anim_texture(state: String) -> Texture2D:
+	var sprite_frames = animated_sprite.get_sprite_frames()
+	return sprite_frames.get_frame_texture(state, 0)
+
+#tween
+func _tween_pop_off(direction: String):
+	match direction:
+		'straight':
+			apply_central_impulse(Vector2(0, -500))
+		'left':
+			apply_central_impulse(Vector2(-150, -500))
+		'right':
+			apply_central_impulse(Vector2(150, -500))

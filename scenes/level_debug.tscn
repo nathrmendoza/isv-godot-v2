@@ -1,15 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://gf6116eqikgr"]
+[gd_scene load_steps=5 format=3 uid="uid://gf6116eqikgr"]
 
 [ext_resource type="PackedScene" uid="uid://dvbw61cjjh4ty" path="res://scenes/obj_ingredient.tscn" id="1_0booi"]
 [ext_resource type="Script" path="res://scripts/debug.gd" id="1_d5xud"]
 [ext_resource type="PackedScene" uid="uid://def7o8q05t2hh" path="res://scenes/obj_droppable.tscn" id="3_xmf5l"]
+[ext_resource type="PackedScene" uid="uid://o1cgde63wpn6" path="res://scenes/obj_stove.tscn" id="4_ynn72"]
 
 [node name="LevelDebug" type="Node2D"]
 script = ExtResource("1_d5xud")
 spawn_object = ExtResource("1_0booi")
-
-[node name="ObjIngredient" parent="." instance=ExtResource("1_0booi")]
-position = Vector2(233, 66)
 
 [node name="Button" type="Button" parent="."]
 z_index = 1
@@ -18,15 +16,24 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 312.0
-offset_top = 652.0
-offset_right = 456.0
-offset_bottom = 691.0
+offset_left = 298.0
+offset_top = 780.0
+offset_right = 442.0
+offset_bottom = 819.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "SPAWN OBJECT"
 
 [node name="ObjDroppable" parent="." instance=ExtResource("3_xmf5l")]
-position = Vector2(239, 380)
+position = Vector2(355, 572)
+
+[node name="ObjIngredient" parent="." instance=ExtResource("1_0booi")]
+position = Vector2(237, 103)
+
+[node name="ObjStove" parent="." instance=ExtResource("4_ynn72")]
+position = Vector2(125, 566)
+
+[node name="SpawnLocation" type="Marker2D" parent="."]
+position = Vector2(231, 417)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

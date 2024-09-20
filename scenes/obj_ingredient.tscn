@@ -19,7 +19,7 @@ animations = [{
 "texture": ExtResource("2_5be8i")
 }],
 "loop": true,
-"name": &"default",
+"name": &"raw",
 "speed": 5.0
 }]
 
@@ -29,7 +29,7 @@ radius = 41.7732
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vqb"]
 size = Vector2(84, 84)
 
-[node name="ObjIngredient" type="RigidBody2D"]
+[node name="ObjIngredient" type="RigidBody2D" groups=["ingredients"]]
 z_index = 1
 input_pickable = true
 freeze_mode = 1
@@ -40,6 +40,7 @@ script = ExtResource("1_n7a4u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_ecpfl")
+animation = &"raw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xsmm")
@@ -55,4 +56,6 @@ shape = SubResource("RectangleShape2D_s7vqb")
 disabled = true
 debug_color = Color(0.800267, 0.407681, 0.284905, 0.42)
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
