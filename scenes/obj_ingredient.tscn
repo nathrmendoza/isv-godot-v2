@@ -30,8 +30,9 @@ radius = 41.7732
 size = Vector2(84, 84)
 
 [node name="ObjIngredient" type="RigidBody2D"]
+z_index = 1
 input_pickable = true
-gravity_scale = 0.6
+freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_n7a4u")

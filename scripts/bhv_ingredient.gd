@@ -14,7 +14,7 @@ var last_pointer_position: Vector2
 var pointer_velocity: Vector2
 
 var throw_force_mult: float = 15.0
-var throw_max_velocity: float = 25.0
+var throw_max_velocity: float = 50.0
 
 var offscreen_margin: float
 var viewport_height: float
@@ -34,7 +34,7 @@ func _on_viewport_change() -> void:
 
 #handle press and release on collider
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) or (event is InputEventScreenTouch):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and draggable:
 			if check_pointer_within_shape(event.global_position):
 				grabbing_object(event.global_position)

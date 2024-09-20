@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://gf6116eqikgr"]
+[gd_scene load_steps=4 format=3 uid="uid://gf6116eqikgr"]
 
 [ext_resource type="PackedScene" uid="uid://dvbw61cjjh4ty" path="res://scenes/obj_ingredient.tscn" id="1_0booi"]
 [ext_resource type="Script" path="res://scripts/debug.gd" id="1_d5xud"]
+[ext_resource type="PackedScene" uid="uid://def7o8q05t2hh" path="res://scenes/obj_droppable.tscn" id="3_xmf5l"]
 
 [node name="LevelDebug" type="Node2D"]
 script = ExtResource("1_d5xud")
@@ -24,5 +25,8 @@ offset_bottom = 691.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "SPAWN OBJECT"
+
+[node name="ObjDroppable" parent="." instance=ExtResource("3_xmf5l")]
+position = Vector2(239, 380)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
