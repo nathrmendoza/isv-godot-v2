@@ -8,3 +8,7 @@
 - Set rigidbody to kinematic
 - Collision fixes
 - Stove interaction
+### 092124
+- Container objects (for ingredient objects)
+- Ingredient resource
+- Update sizing of sprites
