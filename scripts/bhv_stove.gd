@@ -1,9 +1,9 @@
 extends Node
 
 const MAX_COOK = 6
-var cooking_slots: Array
-var cooking_sprites: Array
-var cooking_tweens: Array
+var cooking_slots: Array = [null, null, null, null, null, null]
+var cooking_sprites: Array = [null, null, null, null, null, null]
+var cooking_tweens: Array = [null, null, null, null, null, null]
 
 var colliding_body_ref = null
 
@@ -22,12 +22,6 @@ var colliding_body_ref = null
 
 var timer: float = 0.0
 var cook_time_tally: float = 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	cooking_slots = [null, null, null, null, null, null]
-	cooking_sprites = [null, null, null, null, null, null]
-	cooking_tweens = [null, null, null, null, null, null]
 
 #this ensures stove animations are running until there's no ingredient left
 func _physics_process(delta: float) -> void:

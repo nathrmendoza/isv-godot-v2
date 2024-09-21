@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 #ingredient specific properties
-@export_range(1, 15, 1) var cook_timer: int = 10
+@export_range(1, 15, 1) var cook_timer: int = 6
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_body: CollisionShape2D = $CollisionShape2D
@@ -94,8 +94,6 @@ func start_cooking(cooking_position: Vector2):
 		draggable = false
 		global_position = cooking_position
 		set_deferred('freeze', true)
-		#disable collider masks (this ensures ingredients don't bump with each other)
-		set_collision_mask_value(1, false)
 		hide()
 
 func finish_cooking():
@@ -105,10 +103,6 @@ func finish_cooking():
 	animated_sprite.animation = 'cooked'
 	freeze = false
 	_tween_pop_off('right')
-	
-	#reset collisions
-	await get_tree().create_timer(2.0).timeout
-	set_collision_mask_value(1, true)
 
 #getting texture from animation (single frame only)
 func get_anim_texture(state: String) -> Texture2D:
@@ -117,10 +111,18 @@ func get_anim_texture(state: String) -> Texture2D:
 
 #tween
 func _tween_pop_off(direction: String):
+	#disable collider for 2 seconds (avoids bumping to each other)
+	set_collision_mask_value(1, false)
+	
+	var rand_x = randi_range(75, 250)
 	match direction:
 		'straight':
 			apply_central_impulse(Vector2(0, -500))
 		'left':
-			apply_central_impulse(Vector2(-150, -500))
+			apply_central_impulse(Vector2(-rand_x, -500))
 		'right':
-			apply_central_impulse(Vector2(150, -500))
+			apply_central_impulse(Vector2(rand_x, -500))
+	
+	
+	await get_tree().create_timer(0.75).timeout
+	set_collision_mask_value(1, true)

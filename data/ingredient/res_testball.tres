@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dwgw3h8gqgtju"]
+
+[ext_resource type="PackedScene" uid="uid://dvbw61cjjh4ty" path="res://scenes/obj_ingredient.tscn" id="1_x8j0c"]
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="2_wb2xv"]
+
+[resource]
+script = ExtResource("2_wb2xv")
+ingredient_id = "test_ball"
+name = "Test Ball"
+description = "Just a ball for testing."
+ingredient_scene = ExtResource("1_x8j0c")

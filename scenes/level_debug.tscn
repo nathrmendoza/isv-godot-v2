@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://gf6116eqikgr"]
+[gd_scene load_steps=8 format=3 uid="uid://gf6116eqikgr"]
 
 [ext_resource type="PackedScene" uid="uid://dvbw61cjjh4ty" path="res://scenes/obj_ingredient.tscn" id="1_0booi"]
 [ext_resource type="Script" path="res://scripts/debug.gd" id="1_d5xud"]
-[ext_resource type="PackedScene" uid="uid://def7o8q05t2hh" path="res://scenes/obj_droppable.tscn" id="3_xmf5l"]
+[ext_resource type="PackedScene" uid="uid://codud652vjd76" path="res://scenes/obj_prep_table.tscn" id="4_uq3oj"]
 [ext_resource type="PackedScene" uid="uid://o1cgde63wpn6" path="res://scenes/obj_stove.tscn" id="4_ynn72"]
+[ext_resource type="PackedScene" uid="uid://dvob3mx2mmah6" path="res://scenes/obj_container.tscn" id="5_488xn"]
+[ext_resource type="Resource" uid="uid://dwgw3h8gqgtju" path="res://data/ingredient/res_testball.tres" id="6_rnhqv"]
+[ext_resource type="PackedScene" uid="uid://88tqqbpackoo" path="res://scenes/obj_container_alt.tscn" id="7_u1egw"]
 
 [node name="LevelDebug" type="Node2D"]
 script = ExtResource("1_d5xud")
@@ -16,24 +19,35 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 298.0
-offset_top = 780.0
-offset_right = 442.0
-offset_bottom = 819.0
+offset_left = 72.0
+offset_top = 541.0
+offset_right = 216.0
+offset_bottom = 580.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "SPAWN OBJECT"
 
-[node name="ObjDroppable" parent="." instance=ExtResource("3_xmf5l")]
-position = Vector2(355, 572)
-
 [node name="ObjIngredient" parent="." instance=ExtResource("1_0booi")]
-position = Vector2(237, 103)
+position = Vector2(241, 287)
 
 [node name="ObjStove" parent="." instance=ExtResource("4_ynn72")]
-position = Vector2(125, 566)
+position = Vector2(144, 702)
 
 [node name="SpawnLocation" type="Marker2D" parent="."]
-position = Vector2(231, 417)
+position = Vector2(241, 200)
+
+[node name="ObjPrepTable" parent="." instance=ExtResource("4_uq3oj")]
+position = Vector2(375, 710)
+rotation = 1.5708
+
+[node name="ObjContainer" parent="." instance=ExtResource("5_488xn")]
+position = Vector2(376, 454)
+ingredient = ExtResource("6_rnhqv")
+pop_direction = "left"
+
+[node name="ObjContainerAlt" parent="." instance=ExtResource("7_u1egw")]
+position = Vector2(84, 447)
+ingredient = ExtResource("6_rnhqv")
+pop_direction = "right"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

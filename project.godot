@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="MechanicsTesting"
+config/name="ProjectISV"
 run/main_scene="res://scenes/level_debug.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerData="*res://scripts/globals_player_data.gd"
 
 [display]
 
@@ -21,6 +25,7 @@ window/size/viewport_width=486
 window/size/viewport_height=864
 window/size/initial_position=Vector2i(-1, 0)
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [global_group]
