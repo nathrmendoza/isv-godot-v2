@@ -28,9 +28,5 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				update_stock(stock - 1)
 				var _ingredient = ingredient.ingredient_scene.instantiate()
 				_ingredient.position = Vector2(0, 0)
-				#UPDATE THIS TO MAIN SCENE
 				add_child(_ingredient)
 				_ingredient._tween_pop_off(pop_direction)
-				
-				#test parent node
-				print_debug(_ingredient.get_parent())

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://f266p24klhvr"]
+
+[ext_resource type="PackedScene" uid="uid://dghc5yt2xfe6j" path="res://scenes/obj_ingredient_fire_ball.tscn" id="1_352hn"]
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="1_c3ao8"]
+
+[resource]
+script = ExtResource("1_c3ao8")
+ingredient_id = "fire_ball"
+name = "Fire Ball"
+description = "A fire ingredient"
+ingredient_scene = ExtResource("1_352hn")

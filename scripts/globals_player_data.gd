@@ -14,7 +14,7 @@ var ingredients: Dictionary = {
 		'stock': 0
 	},
 	'fire_ball': {
-		'stock': 0
+		'stock': 20
 	},
 	'water_ball': {
 		'stock': 0

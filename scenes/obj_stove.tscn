@@ -57,7 +57,7 @@ script = ExtResource("1_815hk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x37j2")
-frame_progress = 0.92191
+frame_progress = 0.123933
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -70,21 +70,22 @@ position = Vector2(-5.68434e-14, -6)
 texture = ExtResource("11_h36gh")
 
 [node name="Position1" type="Marker2D" parent="ParentMask"]
-position = Vector2(-45, 1)
+position = Vector2(-61, 9)
 
 [node name="Position2" type="Marker2D" parent="ParentMask"]
+position = Vector2(0, -2)
 
 [node name="Position3" type="Marker2D" parent="ParentMask"]
-position = Vector2(45, 0)
+position = Vector2(61, 8)
 
 [node name="Position4" type="Marker2D" parent="ParentMask"]
-position = Vector2(-45, 35)
+position = Vector2(-61, 43)
 
 [node name="Position5" type="Marker2D" parent="ParentMask"]
-position = Vector2(0, 35)
+position = Vector2(5.68434e-14, 59)
 
 [node name="Position6" type="Marker2D" parent="ParentMask"]
-position = Vector2(45, 35)
+position = Vector2(61, 43)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

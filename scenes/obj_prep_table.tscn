@@ -1,45 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://codud652vjd76"]
+[gd_scene load_steps=3 format=3 uid="uid://codud652vjd76"]
 
-[ext_resource type="Script" path="res://scripts/bhv_prep_table.gd" id="1_ef8re"]
 [ext_resource type="Texture2D" uid="uid://do5b5skp4a6te" path="res://sprites/prep/spr_prep_table.png" id="1_xuxrw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1o4t"]
-size = Vector2(60, 130)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxqc2"]
-size = Vector2(58, 129)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_quu56"]
-size = Vector2(58, 128)
+[ext_resource type="PackedScene" uid="uid://dcekye8yumxe1" path="res://scenes/obj_prep_area.tscn" id="2_frbse"]
 
 [node name="ObjPrepTable" type="Node2D"]
-script = ExtResource("1_ef8re")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xuxrw")
 
-[node name="Area1" type="Area2D" parent="."]
-position = Vector2(-69, 2)
+[node name="ObjPrepArea" parent="." instance=ExtResource("2_frbse")]
+position = Vector2(-2, -83)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area1"]
-position = Vector2(-1, 2)
-shape = SubResource("RectangleShape2D_g1o4t")
+[node name="ObjPrepArea2" parent="." instance=ExtResource("2_frbse")]
 
-[node name="Area2" type="Area2D" parent="."]
-position = Vector2(8, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2"]
-position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_sxqc2")
-
-[node name="Area3" type="Area2D" parent="."]
-position = Vector2(85, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area3"]
-position = Vector2(-1, 3)
-shape = SubResource("RectangleShape2D_quu56")
-
-[connection signal="body_entered" from="Area1" to="." method="_on_area_1_body_entered"]
-[connection signal="body_exited" from="Area1" to="." method="_on_area_1_body_exited"]
-[connection signal="mouse_entered" from="Area1" to="." method="_on_area_1_mouse_entered"]
-[connection signal="mouse_exited" from="Area1" to="." method="_on_area_1_mouse_exited"]
+[node name="ObjPrepArea3" parent="." instance=ExtResource("2_frbse")]
+position = Vector2(-1, 76)

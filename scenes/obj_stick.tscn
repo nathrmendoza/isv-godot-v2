@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://oxbvham6wg4v"]
+
+[ext_resource type="Texture2D" uid="uid://cc83qbrultqm8" path="res://sprites/prep/spr_stick.png" id="1_l1p3d"]
+[ext_resource type="Script" path="res://scripts/bhv_stick.gd" id="1_sq76r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdiuf"]
+size = Vector2(158, 68)
+
+[node name="ObjStick" type="RigidBody2D"]
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_sq76r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l1p3d")
+
+[node name="SpritePosition1" type="Marker2D" parent="."]
+position = Vector2(-32, 0)
+
+[node name="SpritePosition2" type="Marker2D" parent="."]
+
+[node name="SpritePosition3" type="Marker2D" parent="."]
+position = Vector2(32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sdiuf")
+debug_color = Color(0.898932, 0.373679, 0.309027, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,6 +1,12 @@
 extends RigidBody2D
 
 #ingredient specific properties
+@export var ingredient_name: String = 'Name'
+@export_multiline var ingredient_description: String = 'Description'
+@export_enum('damage', 'buff') var action_type: String = 'damage'
+@export_enum('blunt', 'slice', 'pierce', 'fire', 'water', 'shock', 'wind', 'heal', 'shield') var effect_type: String = 'blint'
+@export var raw_power: int = 0
+@export var cooked_power: int = 0
 @export_range(1, 15, 1) var cook_timer: int = 6
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -65,7 +71,7 @@ func _physics_process(delta: float) -> void:
 			
 	#remove if below boundary
 	if global_position.y > viewport_height + offscreen_margin:
-		queue_free()
+		destroy()
 
 #check if mouse/touch is within collision_body shape
 func check_pointer_within_shape(point: Vector2) -> bool:
@@ -94,6 +100,8 @@ func start_cooking(cooking_position: Vector2):
 		draggable = false
 		global_position = cooking_position
 		set_deferred('freeze', true)
+		#disable colliding
+		set_collision_mask_value(1, false)
 		hide()
 
 func finish_cooking():
@@ -109,7 +117,7 @@ func get_anim_texture(state: String) -> Texture2D:
 	var sprite_frames = animated_sprite.get_sprite_frames()
 	return sprite_frames.get_frame_texture(state, 0)
 
-#tween
+#tweens
 func _tween_pop_off(direction: String):
 	#disable collider for 2 seconds (avoids bumping to each other)
 	set_collision_mask_value(1, false)
@@ -124,5 +132,27 @@ func _tween_pop_off(direction: String):
 			apply_central_impulse(Vector2(rand_x, -500))
 	
 	
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(2).timeout
 	set_collision_mask_value(1, true)
+
+func destroy() -> void:
+	queue_free()
+
+#fetch ingredient values
+func fetch_ingredient_stats() -> Dictionary:
+	if cooked:
+		return {
+			'name': ingredient_name,
+			'description': ingredient_description,
+			'action_type': action_type,
+			'effect_type': effect_type,
+			'power': cooked_power
+		}
+	else:
+		return {
+			'name': ingredient_name,
+			'description': ingredient_description,
+			'action_type': action_type,
+			'effect_type': effect_type,
+			'power': raw_power
+		}
