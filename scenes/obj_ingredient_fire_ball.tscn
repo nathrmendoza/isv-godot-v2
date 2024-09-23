@@ -41,7 +41,7 @@ ingredient_description = "Ingredient for fire element"
 effect_type = "fire"
 raw_power = 5
 cooked_power = 35
-cook_timer = 5
+cook_timer = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["ingredients"]]
 sprite_frames = SubResource("SpriteFrames_ecpfl")

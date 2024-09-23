@@ -18,22 +18,7 @@ var colliding_body_ref = null
 
 #load child sprites under mask
 @onready var sprite_parent: Sprite2D = $ParentMask
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-var timer: float = 0.0
-var cook_time_tally: float = 0.0
-
-#this ensures stove animations are running until there's no ingredient left
-func _physics_process(delta: float) -> void:
-	#run timer 
-	if cook_time_tally > 0.0:
-		timer += delta
-	if timer > cook_time_tally:
-		animated_sprite.stop()
-		animated_sprite.animation = 'default'
-		timer = 0.0
-		cook_time_tally = 0.0
-		
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D		
 
 func can_accept_ingredient() -> bool:
 	return cooking_slots.count(null) > 0
@@ -53,7 +38,6 @@ func start_cooking(ingredient):
 	ingredient.start_cooking(cooking_positions[slot].global_position)
 	
 	#change stove animation
-	cook_time_tally = timer + ingredient.cook_timer
 	if animated_sprite.animation != 'cooking':
 		animated_sprite.animation = 'cooking'
 		animated_sprite.play()
@@ -91,6 +75,17 @@ func finish_cooking(slot: int):
 		cooking_sprites[slot] = null
 		cooking_tweens[slot].kill()
 		cooking_tweens[slot] = null
+		
+	#reset stove animation: check if all slots is null
+	var cooking_slots_empty = true
+	for i in cooking_slots:
+		if i != null:
+			cooking_slots_empty = false
+			break
+			
+	if cooking_slots_empty:
+		animated_sprite.stop()
+		animated_sprite.animation = 'default'
 
 #check for colliding bodies, start cooking method if has group ingredients
 func _on_area_2d_body_entered(colliding_body: Node2D) -> void:
