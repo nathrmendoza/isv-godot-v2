@@ -15,4 +15,6 @@
 ### 092224
 - Prep table and prep areas
 - 2nd ingredient
-- stick object
+- Stick object
+### 092324
+- Bug fixes to stove animation, prep area and stick colliding with ingredients
