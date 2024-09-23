@@ -12,3 +12,7 @@
 - Container objects (for ingredient objects)
 - Ingredient resource
 - Update sizing of sprites
+### 092224
+- Prep table and prep areas
+- 2nd ingredient
+- stick object
