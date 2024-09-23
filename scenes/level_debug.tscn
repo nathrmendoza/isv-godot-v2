@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://gf6116eqikgr"]
+[gd_scene load_steps=16 format=3 uid="uid://gf6116eqikgr"]
 
 [ext_resource type="PackedScene" uid="uid://dvbw61cjjh4ty" path="res://scenes/obj_ingredient.tscn" id="1_0booi"]
 [ext_resource type="Script" path="res://scripts/debug.gd" id="1_d5xud"]
 [ext_resource type="PackedScene" uid="uid://codud652vjd76" path="res://scenes/obj_prep_table.tscn" id="4_uq3oj"]
 [ext_resource type="PackedScene" uid="uid://o1cgde63wpn6" path="res://scenes/obj_stove.tscn" id="4_ynn72"]
 [ext_resource type="PackedScene" uid="uid://dvob3mx2mmah6" path="res://scenes/obj_container.tscn" id="5_488xn"]
-[ext_resource type="Resource" uid="uid://dwgw3h8gqgtju" path="res://data/ingredient/res_testball.tres" id="6_rnhqv"]
+[ext_resource type="Resource" uid="uid://ci81cl53t018a" path="res://data/ingredient/res_slice_ball.tres" id="6_up24n"]
 [ext_resource type="PackedScene" uid="uid://88tqqbpackoo" path="res://scenes/obj_container_alt.tscn" id="7_u1egw"]
 [ext_resource type="Resource" uid="uid://f266p24klhvr" path="res://data/ingredient/res_fire_ball.tres" id="8_h6pv7"]
+[ext_resource type="Resource" uid="uid://dtxksr6xhwifd" path="res://data/ingredient/res_blunt_ball.tres" id="9_nkuku"]
+[ext_resource type="Resource" uid="uid://86yteon7jakp" path="res://data/ingredient/res_pierce_ball.tres" id="10_veiko"]
+[ext_resource type="Resource" uid="uid://uldl0bjycsls" path="res://data/ingredient/res_ice_ball.tres" id="11_yvo6i"]
+[ext_resource type="Resource" uid="uid://be2k0b1oxcn5p" path="res://data/ingredient/res_shock_ball.tres" id="12_yrg6e"]
+[ext_resource type="Resource" uid="uid://cb5fnkc1cpj35" path="res://data/ingredient/res_wind_ball.tres" id="13_72up7"]
+[ext_resource type="Resource" uid="uid://dyaf0nio4cxxi" path="res://data/ingredient/res_heal_ball.tres" id="14_8vowe"]
+[ext_resource type="Resource" uid="uid://bf1k160o7b33b" path="res://data/ingredient/res_shield_ball.tres" id="15_srr0e"]
 
 [node name="LevelDebug" type="Node2D"]
 script = ExtResource("1_d5xud")
@@ -20,16 +27,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 158.0
-offset_top = 22.0
-offset_right = 343.0
-offset_bottom = 61.0
+offset_left = 37.0
+offset_top = 51.0
+offset_right = 222.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "DEBUG OBJECT SPAWN"
-
-[node name="ObjIngredient" parent="." instance=ExtResource("1_0booi")]
-position = Vector2(242, 116)
 
 [node name="ObjStove" parent="." instance=ExtResource("4_ynn72")]
 position = Vector2(144, 702)
@@ -41,13 +45,47 @@ position = Vector2(241, 116)
 position = Vector2(375, 710)
 
 [node name="ObjContainer" parent="." instance=ExtResource("5_488xn")]
-position = Vector2(376, 454)
-ingredient = ExtResource("6_rnhqv")
-pop_direction = "left"
+position = Vector2(88, 423)
+ingredient = ExtResource("6_up24n")
+pop_direction = "right"
 
 [node name="ObjContainerAlt" parent="." instance=ExtResource("7_u1egw")]
-position = Vector2(132, 452)
+position = Vector2(66, 243)
 ingredient = ExtResource("8_h6pv7")
 pop_direction = "right"
+
+[node name="ObjContainer2" parent="." instance=ExtResource("5_488xn")]
+position = Vector2(243, 424)
+ingredient = ExtResource("9_nkuku")
+
+[node name="ObjContainer3" parent="." instance=ExtResource("5_488xn")]
+position = Vector2(398, 425)
+ingredient = ExtResource("10_veiko")
+pop_direction = "left"
+
+[node name="ObjContainerAlt2" parent="." instance=ExtResource("7_u1egw")]
+position = Vector2(418, 236)
+ingredient = ExtResource("11_yvo6i")
+pop_direction = "left"
+
+[node name="ObjContainerAlt3" parent="." instance=ExtResource("7_u1egw")]
+position = Vector2(62, 319)
+ingredient = ExtResource("12_yrg6e")
+pop_direction = "right"
+
+[node name="ObjContainerAlt4" parent="." instance=ExtResource("7_u1egw")]
+position = Vector2(420, 314)
+ingredient = ExtResource("13_72up7")
+pop_direction = "left"
+
+[node name="ObjContainerAlt5" parent="." instance=ExtResource("7_u1egw")]
+position = Vector2(69, 162)
+ingredient = ExtResource("14_8vowe")
+pop_direction = "right"
+
+[node name="ObjContainerAlt6" parent="." instance=ExtResource("7_u1egw")]
+position = Vector2(421, 156)
+ingredient = ExtResource("15_srr0e")
+pop_direction = "left"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

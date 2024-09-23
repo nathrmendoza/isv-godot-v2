@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://uldl0bjycsls"]
+
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="1_g6n0f"]
+[ext_resource type="PackedScene" uid="uid://cx5sssiqc050w" path="res://scenes/ingredients/obj_ing_ice.tscn" id="1_isbtd"]
+
+[resource]
+script = ExtResource("1_g6n0f")
+ingredient_id = "ice_ball"
+name = "Ice Ball"
+description = "An ingredient for ice damage, will slow enemies action timer"
+ingredient_scene = ExtResource("1_isbtd")

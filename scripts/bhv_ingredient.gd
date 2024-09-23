@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var ingredient_name: String = 'Name'
 @export_multiline var ingredient_description: String = 'Description'
 @export_enum('damage', 'buff') var action_type: String = 'damage'
-@export_enum('blunt', 'slice', 'pierce', 'fire', 'water', 'shock', 'wind', 'heal', 'shield') var effect_type: String = 'blint'
+@export_enum('blunt', 'slice', 'pierce', 'fire', 'ice', 'shock', 'wind', 'heal', 'shield') var effect_type: String = 'blint'
 @export var raw_power: int = 0
 @export var cooked_power: int = 0
 @export_range(1, 15, 1) var cook_timer: int = 6
@@ -125,7 +125,7 @@ func _tween_pop_off(direction: String):
 	var rand_x = randi_range(75, 250)
 	match direction:
 		'straight':
-			apply_central_impulse(Vector2(0, -500))
+			apply_central_impulse(Vector2(0, -600))
 		'left':
 			apply_central_impulse(Vector2(-rand_x, -500))
 		'right':

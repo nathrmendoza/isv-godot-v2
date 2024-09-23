@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bf1k160o7b33b"]
+
+[ext_resource type="PackedScene" uid="uid://xhojsabvesrr" path="res://scenes/ingredients/obj_ing_shield.tscn" id="1_fb18o"]
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="1_yhfwg"]
+
+[resource]
+script = ExtResource("1_yhfwg")
+ingredient_id = "shield_ball"
+name = "Shield Ball"
+description = "Adds armor to cart reducing damage dealt by enimies"
+ingredient_scene = ExtResource("1_fb18o")

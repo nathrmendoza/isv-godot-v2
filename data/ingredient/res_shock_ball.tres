@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://be2k0b1oxcn5p"]
+
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="1_4hfah"]
+[ext_resource type="PackedScene" uid="uid://0dnqgo5wnxa0" path="res://scenes/ingredients/obj_ing_shock.tscn" id="1_i18gb"]
+
+[resource]
+script = ExtResource("1_4hfah")
+ingredient_id = "shock_ball"
+name = "Shock Ball"
+description = "An ingredient for shock damage, disables enemy armor"
+ingredient_scene = ExtResource("1_i18gb")

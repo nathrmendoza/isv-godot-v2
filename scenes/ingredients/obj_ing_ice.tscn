@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx5sssiqc050w"]
+
+[ext_resource type="Script" path="res://scripts/bhv_ingredient.gd" id="1_sev0q"]
+[ext_resource type="Texture2D" uid="uid://ca7piv8i84rb4" path="res://sprites/ingredients/spr_ice_alt.png" id="2_cxvpc"]
+[ext_resource type="Texture2D" uid="uid://cjm57t5lav2nu" path="res://sprites/ingredients/spr_ice.png" id="3_oe41a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecpfl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cxvpc")
+}],
+"loop": true,
+"name": &"cooked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oe41a")
+}],
+"loop": true,
+"name": &"raw",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xsmm"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7vqb"]
+size = Vector2(64, 64)
+
+[node name="ObjIngIce" type="RigidBody2D" groups=["ingredients"]]
+z_index = 1
+input_pickable = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_sev0q")
+ingredient_name = "Ice Ball"
+ingredient_description = "An ingredient for ice damage, will slow enemies action timer"
+effect_type = "ice"
+raw_power = 5
+cooked_power = 25
+cook_timer = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["ingredients"]]
+sprite_frames = SubResource("SpriteFrames_ecpfl")
+animation = &"raw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2xsmm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s7vqb")
+disabled = true
+debug_color = Color(0.800267, 0.407681, 0.284905, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -5,31 +5,31 @@ var ingredients: Dictionary = {
 		'stock': 10
 	},
 	'blunt_ball': {
-		'stock': 0
+		'stock': 20
 	},
 	'pierce_ball': {
-		'stock': 0
+		'stock': 20
 	},
 	'slice_ball': {
-		'stock': 0
+		'stock': 20
 	},
 	'fire_ball': {
 		'stock': 20
 	},
-	'water_ball': {
-		'stock': 0
+	'ice_ball': {
+		'stock': 20
 	},
 	'shock_ball': {
-		'stock': 0
+		'stock': 20
 	},
 	'wind_ball': {
-		'stock': 0
+		'stock': 20
 	},
 	'heal_ball': {
-		'stock': 0
+		'stock': 20
 	},
 	'shield_ball': {
-		'stock': 0
+		'stock': 20
 	}
 }
 
@@ -57,8 +57,8 @@ func _fetch_ingredient(name: String):
 			return ingredients.slice_ball
 		'fire_ball': 
 			return ingredients.fire_ball
-		'water_ball': 
-			return ingredients.water_ball
+		'ice_ball': 
+			return ingredients.ice_ball
 		'shock_ball': 
 			return ingredients.shock_ball
 		'wind_ball': 

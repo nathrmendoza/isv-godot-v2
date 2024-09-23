@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://86yteon7jakp"]
+
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="1_opvwi"]
+[ext_resource type="PackedScene" uid="uid://d3edmqq88vkcf" path="res://scenes/ingredients/obj_ing_pierce.tscn" id="1_wsdlc"]
+
+[resource]
+script = ExtResource("1_opvwi")
+ingredient_id = "pierce_ball"
+name = "Pierce Ball"
+description = "A ingredient that deals pierce damage, pierces through enemy armor  (add 0.25 / 0.5) modifier to damage"
+ingredient_scene = ExtResource("1_wsdlc")

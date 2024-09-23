@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://ci81cl53t018a"]
+
+[ext_resource type="PackedScene" uid="uid://clmvaakp5130u" path="res://scenes/ingredients/obj_ing_slice.tscn" id="1_68bd1"]
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="1_nk3mb"]
+
+[resource]
+script = ExtResource("1_nk3mb")
+ingredient_id = "slice_ball"
+name = "Slice Ball"
+description = "An ingredient that deals slice damage, if enemy has no armor deals massive damage (add 0.5 raw) and makes enemy prio defending"
+ingredient_scene = ExtResource("1_68bd1")

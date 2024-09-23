@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dtxksr6xhwifd"]
+
+[ext_resource type="PackedScene" uid="uid://bh2v24luko7dv" path="res://scenes/ingredients/obj_ing_blunt.tscn" id="1_54co8"]
+[ext_resource type="Script" path="res://scripts/model_ingredient.gd" id="1_eqmy5"]
+
+[resource]
+script = ExtResource("1_eqmy5")
+ingredient_id = "blunt_ball"
+name = "Blunt Ball"
+description = "An ingredient that deals blunt damage, stuns enemy for a few ms or seconds (pause timer)"
+ingredient_scene = ExtResource("1_54co8")
