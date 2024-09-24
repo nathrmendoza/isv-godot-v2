@@ -18,3 +18,7 @@
 - Stick object
 ### 092324
 - Bug fixes to stove animation, prep area and stick colliding with ingredients
+- Add all planned ingredients for prototype
+### 092424
+- Trash can object
+- Stick object draggability
