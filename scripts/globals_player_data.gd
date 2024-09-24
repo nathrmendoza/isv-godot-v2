@@ -2,34 +2,34 @@ extends Node
 
 var ingredients: Dictionary = {
 	'test_ball': {
-		'stock': 10
+		'stock': 100
 	},
 	'blunt_ball': {
-		'stock': 20
+		'stock': 45
 	},
 	'pierce_ball': {
-		'stock': 20
+		'stock': 32
 	},
 	'slice_ball': {
-		'stock': 20
+		'stock': 35
 	},
 	'fire_ball': {
-		'stock': 20
+		'stock': 25
 	},
 	'ice_ball': {
-		'stock': 20
+		'stock': 25
 	},
 	'shock_ball': {
 		'stock': 20
 	},
 	'wind_ball': {
-		'stock': 20
+		'stock': 24
 	},
 	'heal_ball': {
-		'stock': 20
+		'stock':8
 	},
 	'shield_ball': {
-		'stock': 20
+		'stock': 5
 	}
 }
 
@@ -64,7 +64,7 @@ func _fetch_ingredient(name: String):
 		'wind_ball': 
 			return ingredients.wind_ball
 		'heal_ball': 
-			return ingredients.test_ball
+			return ingredients.heal_ball
 		'shield_ball': 
 			return ingredients.shield_ball
 	#fallback
