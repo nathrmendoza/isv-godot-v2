@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 var colliding_body_ref = null
 var ingredient_slots: Array = [null, null, null]
@@ -13,7 +13,7 @@ var mouse_inside = false
 	$SpritePosition3
 ]
 
-@onready var collision_body: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var collision_body: CollisionShape2D = $CollisionShape2D
 
 const TWEEN_SPEED = 0.45
 var last_position: Vector2 = Vector2.ZERO
@@ -23,10 +23,11 @@ var is_dragging: bool = false
 var is_inside_droppable: bool = false
 
 func _ready() -> void:
+	freeze = true
 	last_position = global_position
 
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			#dragging
@@ -39,7 +40,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			#ingredient drop
 			if prep_state and mouse_inside and colliding_body_ref:
 				add_ingredient(colliding_body_ref)
-			
+
 
 func _physics_process(delta: float) -> void:
 	if is_dragging:
@@ -53,11 +54,13 @@ func _physics_process(delta: float) -> void:
 				tween_go_to_position(last_position)
 				get_tree().call_group('trash', 'tween_hide')
 
+
 #tweens
 func tween_go_to_position(mv_position: Vector2) -> void:
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, 'global_position', mv_position, TWEEN_SPEED)
+
 
 #check if mouse/touch is within collision_body shape
 func check_pointer_within_shape(point: Vector2) -> bool:
@@ -79,6 +82,7 @@ func check_pointer_within_shape(point: Vector2) -> bool:
 				return abs(local_point - circle_center).length() <= collision_body.shape.radius
 	#fallback
 	return false
+
 
 func add_ingredient(ingredient) -> void:
 	if ingredient_slots.has(null):
@@ -108,18 +112,23 @@ func add_ingredient(ingredient) -> void:
 	else:
 		print_debug('no more slots on this stick!')
 
+
 func get_available_slot() -> int:
 	return ingredient_slots.find(null)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group('ingredients') or body.is_in_group('prep_area') or body.is_in_group('serve_area') or body.is_in_group('trash_area'):
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group('ingredients'):
 		colliding_body_ref = body
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+
+func _on_body_exited(body: Node) -> void:
 	colliding_body_ref = null
 
-func _on_area_2d_mouse_entered() -> void:
+
+func _on_mouse_entered() -> void:
 	mouse_inside = true
 
-func _on_area_2d_mouse_exited() -> void:
+
+func _on_mouse_exited() -> void:
 	mouse_inside = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://gf6116eqikgr"]
+[gd_scene load_steps=17 format=3 uid="uid://gf6116eqikgr"]
 
 [ext_resource type="PackedScene" uid="uid://dvbw61cjjh4ty" path="res://scenes/obj_ingredient.tscn" id="1_0booi"]
 [ext_resource type="Script" path="res://scripts/debug.gd" id="1_d5xud"]
@@ -16,7 +16,6 @@
 [ext_resource type="Resource" uid="uid://dyaf0nio4cxxi" path="res://data/ingredient/res_heal_ball.tres" id="14_8vowe"]
 [ext_resource type="Resource" uid="uid://bf1k160o7b33b" path="res://data/ingredient/res_shield_ball.tres" id="15_srr0e"]
 [ext_resource type="PackedScene" uid="uid://dp8glptlcla4v" path="res://scenes/obj_trash_can.tscn" id="16_yqfj0"]
-[ext_resource type="PackedScene" uid="uid://oxbvham6wg4v" path="res://scenes/obj_stick.tscn" id="17_kjnf4"]
 
 [node name="LevelDebug" type="Node2D"]
 script = ExtResource("1_d5xud")
@@ -92,8 +91,5 @@ pop_direction = "right"
 
 [node name="ObjTrashCan" parent="." instance=ExtResource("16_yqfj0")]
 position = Vector2(137, 820)
-
-[node name="ObjStick" parent="." instance=ExtResource("17_kjnf4")]
-position = Vector2(241, 305)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

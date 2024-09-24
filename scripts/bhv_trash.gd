@@ -17,7 +17,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			colliding_body_ref.queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print_debug(body)
 	if body.is_in_group('servable'):
 		colliding_body_ref = body
 
