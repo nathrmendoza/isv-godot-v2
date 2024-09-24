@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds2au"]
 size = Vector2(130, 89)
 
-[node name="ObjTrashCan" type="Node2D"]
+[node name="ObjTrashCan" type="Node2D" groups=["trash"]]
 script = ExtResource("1_4khu3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
