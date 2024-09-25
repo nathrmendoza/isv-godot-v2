@@ -14,6 +14,9 @@ func _ready() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed == false and colliding_body_ref:
+			#reset prep area stick obj
+			colliding_body_ref.get_parent().reset_stick_object()
+			#remove stick obj from tree
 			colliding_body_ref.queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

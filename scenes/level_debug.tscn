@@ -51,7 +51,7 @@ ingredient = ExtResource("6_up24n")
 pop_direction = "right"
 
 [node name="ObjContainerAlt" parent="." instance=ExtResource("7_u1egw")]
-position = Vector2(62, 354)
+position = Vector2(56, 354)
 ingredient = ExtResource("8_h6pv7")
 pop_direction = "right"
 
@@ -65,27 +65,27 @@ ingredient = ExtResource("10_veiko")
 pop_direction = "left"
 
 [node name="ObjContainerAlt2" parent="." instance=ExtResource("7_u1egw")]
-position = Vector2(423, 364)
+position = Vector2(430, 364)
 ingredient = ExtResource("11_yvo6i")
 pop_direction = "left"
 
 [node name="ObjContainerAlt3" parent="." instance=ExtResource("7_u1egw")]
-position = Vector2(62, 434)
+position = Vector2(56, 434)
 ingredient = ExtResource("12_yrg6e")
 pop_direction = "right"
 
 [node name="ObjContainerAlt4" parent="." instance=ExtResource("7_u1egw")]
-position = Vector2(423, 438)
+position = Vector2(430, 438)
 ingredient = ExtResource("13_72up7")
 pop_direction = "left"
 
 [node name="ObjContainerAlt6" parent="." instance=ExtResource("7_u1egw")]
-position = Vector2(425, 289)
+position = Vector2(430, 289)
 ingredient = ExtResource("15_srr0e")
 pop_direction = "left"
 
 [node name="ObjContainerAlt5" parent="." instance=ExtResource("7_u1egw")]
-position = Vector2(62, 281)
+position = Vector2(56, 281)
 ingredient = ExtResource("14_8vowe")
 pop_direction = "right"
 

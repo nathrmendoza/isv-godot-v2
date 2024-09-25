@@ -41,7 +41,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			if prep_state and mouse_inside and colliding_body_ref:
 				add_ingredient(colliding_body_ref)
 
-
 func _physics_process(delta: float) -> void:
 	if is_dragging:
 		var current_pointer_position = get_global_mouse_position()
