@@ -1,8 +1,5 @@
 extends Node
 
-#DISABLES TRIGGERING CONTAINER WHEN DRAGGING
-var global_is_dragging = false
-
 var ingredients: Dictionary = {
 	'test_ball': {
 		'stock': 100

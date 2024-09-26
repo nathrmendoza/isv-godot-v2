@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://gf6116eqikgr"]
+[gd_scene load_steps=18 format=3 uid="uid://gf6116eqikgr"]
 
-[ext_resource type="PackedScene" uid="uid://dvbw61cjjh4ty" path="res://scenes/obj_ingredient.tscn" id="1_0booi"]
-[ext_resource type="Script" path="res://scripts/debug.gd" id="1_d5xud"]
+[ext_resource type="Texture2D" uid="uid://nlwugitqy0uh" path="res://sprites/main/spr_top_cart.png" id="3_tl4rc"]
+[ext_resource type="Texture2D" uid="uid://capmbnu7igf8b" path="res://sprites/main/spr_bottom_cart.png" id="4_olebk"]
 [ext_resource type="PackedScene" uid="uid://codud652vjd76" path="res://scenes/obj_prep_table.tscn" id="4_uq3oj"]
 [ext_resource type="PackedScene" uid="uid://o1cgde63wpn6" path="res://scenes/obj_stove.tscn" id="4_ynn72"]
 [ext_resource type="PackedScene" uid="uid://dvob3mx2mmah6" path="res://scenes/obj_container.tscn" id="5_488xn"]
@@ -16,80 +16,94 @@
 [ext_resource type="Resource" uid="uid://dyaf0nio4cxxi" path="res://data/ingredient/res_heal_ball.tres" id="14_8vowe"]
 [ext_resource type="Resource" uid="uid://bf1k160o7b33b" path="res://data/ingredient/res_shield_ball.tres" id="15_srr0e"]
 [ext_resource type="PackedScene" uid="uid://dp8glptlcla4v" path="res://scenes/obj_trash_can.tscn" id="16_yqfj0"]
+[ext_resource type="PackedScene" uid="uid://djgbofmkkrrvh" path="res://scenes/obj_action_area.tscn" id="17_6am82"]
 
 [node name="LevelDebug" type="Node2D"]
-script = ExtResource("1_d5xud")
-spawn_object = ExtResource("1_0booi")
 
-[node name="Button" type="Button" parent="."]
-z_index = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 33.0
-offset_top = 50.0
-offset_right = 218.0
-offset_bottom = 89.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "DEBUG OBJECT SPAWN"
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
 
-[node name="ObjStove" parent="." instance=ExtResource("4_ynn72")]
+[node name="TopCartTexture" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 486.0
+offset_bottom = 104.0
+texture = ExtResource("3_tl4rc")
+
+[node name="BottomCartTexture" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -351.0
+offset_right = 486.0
+grow_vertical = 0
+texture = ExtResource("4_olebk")
+
+[node name="ObjStove" parent="CanvasLayer" instance=ExtResource("4_ynn72")]
 position = Vector2(142, 653)
 
-[node name="SpawnLocation" type="Marker2D" parent="."]
-position = Vector2(241, 116)
-
-[node name="ObjPrepTable" parent="." instance=ExtResource("4_uq3oj")]
+[node name="ObjPrepTable" parent="CanvasLayer" instance=ExtResource("4_uq3oj")]
 position = Vector2(375, 710)
 
-[node name="ObjContainer" parent="." instance=ExtResource("5_488xn")]
+[node name="ObjContainer" parent="CanvasLayer" instance=ExtResource("5_488xn")]
 position = Vector2(87, 525)
 ingredient = ExtResource("6_up24n")
 pop_direction = "right"
 
-[node name="ObjContainerAlt" parent="." instance=ExtResource("7_u1egw")]
+[node name="ObjContainerAlt" parent="CanvasLayer" instance=ExtResource("7_u1egw")]
 position = Vector2(56, 354)
 ingredient = ExtResource("8_h6pv7")
 pop_direction = "right"
 
-[node name="ObjContainer2" parent="." instance=ExtResource("5_488xn")]
+[node name="ObjContainer2" parent="CanvasLayer" instance=ExtResource("5_488xn")]
 position = Vector2(251, 525)
 ingredient = ExtResource("9_nkuku")
 
-[node name="ObjContainer3" parent="." instance=ExtResource("5_488xn")]
+[node name="ObjContainer3" parent="CanvasLayer" instance=ExtResource("5_488xn")]
 position = Vector2(399, 525)
 ingredient = ExtResource("10_veiko")
 pop_direction = "left"
 
-[node name="ObjContainerAlt2" parent="." instance=ExtResource("7_u1egw")]
+[node name="ObjContainerAlt2" parent="CanvasLayer" instance=ExtResource("7_u1egw")]
 position = Vector2(430, 364)
 ingredient = ExtResource("11_yvo6i")
 pop_direction = "left"
 
-[node name="ObjContainerAlt3" parent="." instance=ExtResource("7_u1egw")]
+[node name="ObjContainerAlt3" parent="CanvasLayer" instance=ExtResource("7_u1egw")]
 position = Vector2(56, 434)
 ingredient = ExtResource("12_yrg6e")
 pop_direction = "right"
 
-[node name="ObjContainerAlt4" parent="." instance=ExtResource("7_u1egw")]
+[node name="ObjContainerAlt4" parent="CanvasLayer" instance=ExtResource("7_u1egw")]
 position = Vector2(430, 438)
 ingredient = ExtResource("13_72up7")
 pop_direction = "left"
 
-[node name="ObjContainerAlt6" parent="." instance=ExtResource("7_u1egw")]
+[node name="ObjContainerAlt6" parent="CanvasLayer" instance=ExtResource("7_u1egw")]
 position = Vector2(430, 289)
 ingredient = ExtResource("15_srr0e")
 pop_direction = "left"
 
-[node name="ObjContainerAlt5" parent="." instance=ExtResource("7_u1egw")]
+[node name="ObjContainerAlt5" parent="CanvasLayer" instance=ExtResource("7_u1egw")]
 position = Vector2(56, 281)
 ingredient = ExtResource("14_8vowe")
 pop_direction = "right"
 
-[node name="ObjTrashCan" parent="." instance=ExtResource("16_yqfj0")]
+[node name="ObjTrashCan" parent="CanvasLayer" instance=ExtResource("16_yqfj0")]
 position = Vector2(137, 820)
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="ObjServeArea" parent="." instance=ExtResource("17_6am82")]
+position = Vector2(242, 324)

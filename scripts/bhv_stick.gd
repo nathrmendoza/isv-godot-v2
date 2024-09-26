@@ -115,6 +115,9 @@ func add_ingredient(ingredient) -> void:
 func get_available_slot() -> int:
 	return ingredient_slots.find(null)
 
+func fetch_action_queues() -> void:
+	pass
+	#return an array(3) of dictionaries that have action_type
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group('ingredients'):
