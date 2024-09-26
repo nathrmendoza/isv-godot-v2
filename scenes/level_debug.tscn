@@ -1,5 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://gf6116eqikgr"]
+[gd_scene load_steps=20 format=3 uid="uid://gf6116eqikgr"]
 
+[ext_resource type="Script" path="res://scripts/debug_script.gd" id="1_dfgs7"]
+[ext_resource type="PackedScene" uid="uid://cvtl00ok1bac8" path="res://scenes/ui_player_health.tscn" id="3_l35nh"]
 [ext_resource type="Texture2D" uid="uid://nlwugitqy0uh" path="res://sprites/main/spr_top_cart.png" id="3_tl4rc"]
 [ext_resource type="Texture2D" uid="uid://capmbnu7igf8b" path="res://sprites/main/spr_bottom_cart.png" id="4_olebk"]
 [ext_resource type="PackedScene" uid="uid://codud652vjd76" path="res://scenes/obj_prep_table.tscn" id="4_uq3oj"]
@@ -19,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://djgbofmkkrrvh" path="res://scenes/obj_action_area.tscn" id="17_6am82"]
 
 [node name="LevelDebug" type="Node2D"]
+script = ExtResource("1_dfgs7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -41,6 +44,14 @@ layout_mode = 0
 offset_right = 486.0
 offset_bottom = 104.0
 texture = ExtResource("3_tl4rc")
+
+[node name="UiPlayerHealth" parent="CanvasLayer/Control" instance=ExtResource("3_l35nh")]
+z_index = 3
+layout_mode = 0
+offset_left = 42.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 23.0
 
 [node name="BottomCartTexture" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1

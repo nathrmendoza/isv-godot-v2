@@ -17,8 +17,17 @@ debug_color = Color(0.37171, 0.607901, 0.275084, 0.42)
 
 [node name="PlayerActionTimer" type="Timer" parent="."]
 wait_time = 15.0
+one_shot = true
 autostart = true
+
+[node name="PlayerTimerText" type="Label" parent="."]
+offset_left = -122.0
+offset_top = 102.0
+offset_right = -82.0
+offset_bottom = 125.0
+text = "PLAYER TIMER: 0"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="timeout" from="PlayerActionTimer" to="." method="_on_player_action_timer_timeout"]
