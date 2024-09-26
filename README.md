@@ -25,3 +25,8 @@
 ### 092524
 - Click through bug fix
 - Trash object collision fix
+### 092624
+- Work on action area
+### 092724
+- Action area
+- Health bars
