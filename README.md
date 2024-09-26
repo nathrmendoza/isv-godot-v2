@@ -22,3 +22,6 @@
 ### 092424
 - Trash can object
 - Stick object draggability
+### 092524
+- Click through bug fix
+- Trash object collision fix
