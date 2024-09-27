@@ -82,7 +82,6 @@ offset_left = 41.0
 offset_top = 52.0
 offset_right = 41.0
 offset_bottom = 52.0
-mouse_filter = 2
 
 [node name="ObjStove" parent="CanvasLayer" instance=ExtResource("4_ynn72")]
 position = Vector2(142, 653)

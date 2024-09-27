@@ -110,7 +110,7 @@ func finish_cooking():
 	draggable = true
 	animated_sprite.animation = 'cooked'
 	freeze = false
-	_tween_pop_off('right')
+	_tween_pop_off('right', 'high')
 
 #getting texture from animation (single frame only)
 func get_anim_texture(state: String) -> Texture2D:
@@ -118,18 +118,28 @@ func get_anim_texture(state: String) -> Texture2D:
 	return sprite_frames.get_frame_texture(state, 0)
 
 #tweens
-func _tween_pop_off(direction: String):
+func _tween_pop_off(direction: String, _pop_height: String):
 	#disable collider for 2 seconds (avoids bumping to each other)
 	set_collision_mask_value(1, false)
 	
 	var rand_x = randi_range(75, 250)
+	var pop_height = 500
+	
+	match _pop_height:
+		'low':
+			pop_height = 350
+		'middle':
+			pop_height = 450
+		'high':
+			pop_height = 500
+	
 	match direction:
 		'straight':
-			apply_central_impulse(Vector2(0, -600))
+			apply_central_impulse(Vector2(0, -pop_height))
 		'left':
-			apply_central_impulse(Vector2(-rand_x, -500))
+			apply_central_impulse(Vector2(-rand_x, -pop_height))
 		'right':
-			apply_central_impulse(Vector2(rand_x, -500))
+			apply_central_impulse(Vector2(rand_x, -pop_height))
 	
 	
 	await get_tree().create_timer(2).timeout

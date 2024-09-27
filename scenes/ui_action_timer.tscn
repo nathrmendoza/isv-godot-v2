@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://6jp6o7n4vln6"]
+
+[ext_resource type="Texture2D" uid="uid://bkuf8tkg2ev1u" path="res://sprites/ui_action_timer_empty.png" id="1_ce44t"]
+[ext_resource type="Texture2D" uid="uid://te3f7mvmf8fh" path="res://sprites/ui_action_timer_fill.png" id="2_duoeh"]
+[ext_resource type="Script" path="res://scripts/ui_action_timer.gd" id="3_c25qd"]
+
+[node name="UiActionTimer" type="TextureProgressBar"]
+offset_right = 137.0
+offset_bottom = 137.0
+size_flags_horizontal = 0
+step = 0.1
+fill_mode = 4
+texture_under = ExtResource("2_duoeh")
+texture_progress = ExtResource("1_ce44t")
+script = ExtResource("3_c25qd")

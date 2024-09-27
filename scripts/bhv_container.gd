@@ -2,6 +2,8 @@ extends Node2D
 
 @export var ingredient: Ingredient
 @export_enum('straight', 'left', 'right') var pop_direction = 'straight'
+@export_enum('low', 'middle', 'high') var pop_height = 'high'
+
 var stock: int = 0
 
 @onready var stockText: Label = $Control/StockLabel
@@ -31,7 +33,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				var _ingredient = ingredient.ingredient_scene.instantiate()
 				_ingredient.position = Vector2(0, 0)
 				add_child(_ingredient)
-				_ingredient._tween_pop_off(pop_direction)
+				_ingredient._tween_pop_off(pop_direction, pop_height)
 
 #checks for overlapping bodies (avoids click through)
 func _on_area_2d_body_entered(body: Node2D) -> void:
