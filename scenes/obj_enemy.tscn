@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://brgcv41eqkstn"]
+
+[ext_resource type="Texture2D" uid="uid://c2ui2xcqe3n5i" path="res://sprites/spr_enemy_attacking.png" id="1_2w4sq"]
+[ext_resource type="Script" path="res://scripts/bhv_enemy.gd" id="1_xamcd"]
+[ext_resource type="Texture2D" uid="uid://dj8e25pc2c3e0" path="res://sprites/spr_enemy_idle.png" id="2_yfjl4"]
+[ext_resource type="PackedScene" uid="uid://cvtl00ok1bac8" path="res://scenes/ui_player_health.tscn" id="3_7bmqb"]
+[ext_resource type="PackedScene" uid="uid://6jp6o7n4vln6" path="res://scenes/ui_action_timer.tscn" id="4_34v6l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vfk12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2w4sq")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yfjl4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="ObjEnemy" type="Node2D"]
+script = ExtResource("1_xamcd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_vfk12")
+animation = &"idle"
+
+[node name="Control" type="Control" parent="AnimatedSprite2D"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.5
+offset_top = -151.0
+offset_right = -114.5
+offset_bottom = -151.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="UiPlayerHealth" parent="AnimatedSprite2D/Control" instance=ExtResource("3_7bmqb")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.5
+offset_top = -40.0
+offset_right = 79.5
+offset_bottom = -25.0
+grow_horizontal = 2
+
+[node name="EnemyName" type="Label" parent="AnimatedSprite2D/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.5
+offset_top = -80.0
+offset_right = 51.5
+offset_bottom = -57.0
+grow_horizontal = 2
+rotation = -0.00144171
+text = "Enemy Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UiActionTimer" parent="AnimatedSprite2D/Control" instance=ExtResource("4_34v6l")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -117.0
+offset_top = -47.0
+offset_right = 20.0
+offset_bottom = 90.0
+grow_horizontal = 2
+scale = Vector2(0.228105, 0.228105)
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
