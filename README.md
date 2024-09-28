@@ -29,4 +29,5 @@
 - Work on action area
 ### 092724
 - Action area
-- Health bars
+- Player action timer
+- Player health and armor
